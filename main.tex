@@ -1,0 +1,132 @@
+\documentclass{beamer} % blue; brown; gray; red;
+\usepackage{beamerthemesplit}
+\usepackage{beamerthemeshadow}
+\usepackage{animate}
+\usepackage{hyperref}
+\usepackage[inline]{asymptote}
+%\usepackage[numbered]{mcode}
+\usepackage{graphics}
+\usepackage{colortbl}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps}
+\usepackage{amsmath,amssymb}
+\usepackage{overpic}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{shapes.multipart}
+\usetikzlibrary{positioning}
+\usetikzlibrary{automata,calc}
+\usepackage{verbatim}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{fixltx2e}
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\usetikzlibrary[arrows,decorations.pathmorphing,backgrounds,positioning,fit,petri]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xeCJK}
+%\usepackage{fontspec}
+\setCJKmainfont[BoldFont=simhei.ttf]{simkai.ttf}
+%\setCJKsansfont{simhei.ttf}
+%\setCJKmonofont{simfang.ttf}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetheme{Warsaw}
+%别的主题:Bergen,Boadilla,Madrid,AnnArbor,CambridgeUS,Pittsburgh, Rochester.
+%有导航栏:Antibes,JuanLesPins,Montpellier,
+%有内容的:Berkeley,PaloAlto,% Goettingen,Marburg,Hannover
+%小导航栏:Berlin,Ilmenau,Dresden,Darmstadt, Frankfurt,Singapore,Szeged,
+%章节表单:Copenhagen,Luebeck,Malmoe,Warsaw
+\beamertemplateshadingbackground{red!10}{structure!10}
+\beamertemplatesolidbackgroundcolor{white!90!blue}
+\beamertemplatetransparentcovereddynamic
+\beamertemplateballitem
+\beamertemplatenumberedballsectiontoc
+%\beamertemplatelargetitlepage
+\beamertemplateboldpartpage
+
+\usecolortheme{sidebartab}
+%beetle,crane,dove,fly,seagull,wolverine,beaver
+\renewcommand{\raggedright}{\leftskip=0pt \rightskip=0pt plus 0cm}
+\raggedright
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\graphicspath{{figures/}}
+
+\setbeamertemplate{caption}[numbered]
+\newcommand{\animatepath}{./animate}
+\newcommand\includepart[1]{\include{./part/#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+
+\renewcommand\contentsname{\bf 目录}
+\renewcommand\figurename{\bf 图}
+\renewcommand\tablename{\bf 表}
+\renewcommand\refname{参考文献}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 定义一些自选的模板，包括背景、图标、导航条和页脚等，修改要慎重
+\makeatletter
+\usefoottemplate{ %重新定义页脚，加入作者，单位，单位图标，和文档标题
+  \vbox{\tiny%
+    \hbox{%
+      \setbox\beamer@linebox=\hbox to\paperwidth{%
+        \hbox to.5\paperwidth{
+            \hfill\tiny\color{white}
+                  \textbf{\insertshortauthor\quad\insertshortinstitute}
+            \hskip .1cm\lower 0.2em\hbox{\includegraphics[height=0.25cm]{./figures/CAS-blue.pdf}}
+            \hskip.3cm}%
+        \hbox to.5\paperwidth{
+            \hskip.3cm\tiny\color{white}
+                  \textbf{\insertshorttitle}\hfill}\hfill}%
+      \ht\beamer@linebox=2.625ex%
+      \dp\beamer@linebox=0pt%
+      \setbox\beamer@linebox=\vbox{\box\beamer@linebox\vskip1.125ex}%
+      \color{structure}\hskip-\Gm@lmargin\vrule width.5\paperwidth
+      height\ht\beamer@linebox\color{structure!70}\vrule width.5\paperwidth
+      height\ht\beamer@linebox\hskip-\paperwidth%
+      \hbox{\box\beamer@linebox\hfill}\hfill\hskip-\Gm@rmargin}
+  }
+}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{基于耗散粒子动力学的细胞模型和模拟}
+\subtitle{工作介绍和展示}
+\institute[流固耦合系统力学重点实验室]{流固耦合系统力学重点实验室}
+\author{\href{mailto:zhou.lv.wen@gmail.com}{周吕文} (导师:刘谋斌)}
+\date{2014年09月26日}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{pdfauthor={周吕文},
+            pdftitle={基于耗散粒子动力学的细胞模型和模拟},
+            pdfsubject={工作介绍和展示},
+            pdfkeywords={耗散粒子动力学,细胞模型},
+            pdfproducer={XeLateX with hyperref},
+            pdfcreator={Xelatex}}
+\begin{document}
+\frame[plain]{
+\titlepage
+} 
+\titlegraphic{\pgfuseimage{title}}
+\AtBeginSection[]{ % 在每个Section前都会加入的Frame
+
+
+  \frame<handout:0>{
+    \frametitle{提纲}
+    \tableofcontents[current,currentsubsection]
+  }
+}
+\frame[Outline,plain]{\frametitle{提纲}\tableofcontents
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{./sections/method}
+\input{./sections/DNA}
+\input{./sections/RBCmodel}
+\input{./sections/cancer}
+\input{./sections/matrix}
+
+\input{./sections/thebibliography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{./sections/ThankYou}
+\end{document}

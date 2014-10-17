@@ -1,0 +1,234 @@
+\section{细胞的DPD模型和模拟}
+\subsection{红细胞的DPD模型和模拟}
+\begin{frame}
+\frametitle{红细胞膜结构}
+\note{\textcolor{red}{330-350s}}
+\note[item]{另一方面, 我们还对红细胞的运动与变形进行了模拟}
+\note[item]{图8是血红细胞的模结构, 红细胞膜主要由双分子层, 跨膜蛋白及膜下的血影蛋白网组成. 血影蛋白网是细胞的主要骨架}
+\begin{figure}[!htb]
+\centering
+\input{./figures/RBCstructure.tex}
+\caption{\label{fig:RBCstructure} 人类红细胞膜结构}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{网络模型和连续模型}
+\note{\textcolor{red}{350-375s}}
+\note[item]{我们用左图中由珠簧链构网状结构来模拟红细胞.}
+\note[item]{由于目前的实验测出的参数都是基于细胞的连续模型, 如剪切模量, 弯曲刚度. 这些参数需要同粒子模型中的弹簧常数, 弯曲常数等相匹配.}
+\begin{figure}[!htb]
+\centering
+\input{./figures/network2continuum.tex}
+\caption{\label{fig:network2continuum} 粒子模型(节点为粒子)和连续模型的示意图}
+\end{figure}
+\end{frame}
+
+\frame{\frametitle{网络模型}
+笛卡尔坐标系下的节点$\{\mathbf{x}_i\}, i\in 1\cdots N_v$构成二维三角形网络. 节点间由$N_s$个弹簧构成了$N_t$个三角形. 系统的势能
+\[
+V(\{\mathbf{X}_i\}) = V_{\text{in-plane}} + V_{\text{bending}} + V_{\text{area}} + V_{\text{volume}}
+\]
+
+每个节点的受力
+\[
+\mathbf{f}_i = -\frac{\partial V(\{\mathbf{x}_i\}) }{\partial \mathbf{x}_i}, \; i\in 1\cdots N_v
+\]
+}
+
+
+\frame{\frametitle{面能$V_{\text{in-plane}}$}
+膜上弹性能
+\[
+V_{\text{in-plane}}=\sum_{j\in1\cdots N_s}U_s(l_j)+\sum_{k\in1\cdots N_t} \frac{C_q}{A_k^q}
+\]
+其中$U_s$可以是$U_{WLC}$, $U_{FENE}$, $\cdots$
+\[
+U_{WLC}=\frac{K_BTl_m}{4p}\frac{3x^2-2x^3}{1-x}, \; U_{FENE}=-\frac{k_s}{2}l_m^2\log[1-x^2]
+\]
+其中$x=l/l_m\in(0,1)$, 由平衡时的势能最小可推得
+\[
+C_q^{WLC}=\frac{\sqrt{3}A_0^{q+1}k_BT(4x_0^2-9x_0+6)}{4pql_m(1-x_0)^2}, \;
+C_q^{FENE}=\frac{\sqrt{3}A_0^{q+1}k_s}{q(1-x_0^2)}
+\]
+}
+
+
+
+\frame{\frametitle{弯曲能$V_{\text{bending}}$, 面积能$V_{\text{area}}$和体积能$V_{\text{volume}}$}
+
+\[
+V_{\text{bending}}=\sum_{j\in1\cdots N_s}k_b[1-\cos(\theta_j-\theta_0)]
+\]
+
+\[
+V_{\text{area}}=\frac{k_a(A-A_0^{tot})^2}{2A_0^{tot}} + \sum_{j\in1\cdots N_t}\frac{k_d(A_j-A_0)^2}{2A_0}
+\]
+
+\[
+V_{\text{volume}}=\frac{k_v(V-V_0^{tot})}{2V_0^{tot}}
+\]
+}
+
+
+\begin{frame}
+\frametitle{参数匹配: 剪切模量与弹簧常数}
+\note{\textcolor{red}{375-390s}}
+\note[item]{为了匹配这些参数, 要对珠簧链构成的网络单元进行力学分析, 通过对图10的六边形单元应力分析, 可以得到剪切模量与弹簧常数的关系}
+\begin{columns}
+\begin{column}[c]{0.5\textwidth}
+\begin{figure}[!htb]
+\centering
+\input{./figures/hexagonalcell.tex}
+\caption{\label{fig:network2continuum} 六边形单元}
+\end{figure}
+\end{column}
+\begin{column}[c]{0.5\textwidth}
+\begin{figure}[!htb]
+\centering
+\input{./figures/bend.tex}
+\vspace{-2em}
+\caption{\label{fig:network2continuum} 三角形单元}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{细胞膜粘性}
+细胞膜具有粘弹性, 传统的DPD方法不足以模拟细胞膜的粘性. 在珠簧链模型中加入$-\gamma \mathbf{v}_{ij}$项, 其表达式为
+\[
+\mathbf{F}_{ij}^D = 
+-\bigg(
+\gamma^T\mathbf{I} + \gamma^C \mathbf{e}_{ij}\mathbf{e}_{ij}
+\bigg)\mathbf{v}_{ij}
+=-\gamma^T\mathbf{v}_{ij} -\gamma^C(\mathbf{v}_{ij}\cdot \mathbf{e}_{ij}) \mathbf{e}_{ij}
+\]
+为了维持系统温度的恒定, 需要增加相应的随机力项
+\[
+\mathbf{F}^R_{ij} dt = \sqrt{2k_BT}
+\bigg(
+\sqrt{2 \gamma^T} d\overline{\mathbf{W}_{ij}^S} + \sqrt{3\gamma^C-\gamma^T}\frac{\mathrm{tr}[d\mathbf{W}_{ij}]}{3}\mathbf{I}\bigg)\mathbf{e}_{ij}
+\]
+其中, $d\mathbf{W}_{ij}^S$为具有独立维纳增量的对称矩阵,  $d\overline{\mathbf{W}_{ij}^S}$为相应的无迹对称矩阵. 膜的剪切粘度$\eta_m$为
+\[
+\eta_m=\frac{\tau_{xy}}{\dot{\gamma}} = \sqrt{3}\gamma^T+ \sqrt{3}\gamma^C/4
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{红细胞的运动与变形模拟: 剪切流与泊肃叶流(2D)}
+\begin{columns}
+\begin{column}[c]{0.5\textwidth}
+\begin{figure}
+\centering
+\begin{overpic}[width=\textwidth]{./animate/shear2d/wall.pdf}
+\put(0,0){\animategraphics[width=\textwidth, poster=first,controls,buttonsize=0.8em]{3}{./animate/shear2d/}{0}{21}}
+\end{overpic}
+\caption{剪切流中的红细胞}
+\end{figure}
+\end{column}
+\begin{column}[c]{0.5\textwidth}
+\begin{figure}
+\centering
+\begin{overpic}[width=\textwidth]{./animate/poise2d/wall.pdf}
+\put(0,0){\animategraphics[width=\textwidth, poster=first,controls,buttonsize=0.8em]{3}{./animate/poise2d/}{0}{21}}
+\end{overpic}
+\caption{泊肃叶流中的红细胞}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{细胞膜粘附模型}
+\begin{center}
+\includegraphics[width=\textwidth]{adhesion.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}{细胞膜粘附模型}
+配体(细胞膜上的粒子)和受体(壁面上的粒子)间形成bond
+\[
+F(l) = k_s(l-l_0)
+\]
+形成bond和断裂bond的概率分别为
+\[
+P_{on}=\begin{cases}
+1-\mathrm{e}^{-k_{\mathrm{on}}\Delta t} & l<d_{\mathrm{on}}\\
+0 & l\geq d_{\mathrm{on}}
+\end{cases},\quad P_{\mathrm{off}}=\begin{cases}
+1-\mathrm{e}^{-k_{\mathrm{off}}\Delta t} & l<d_{off}\\
+1 & l\geq d_{\mathrm{off}}
+\end{cases}
+\]
+其中
+\[
+k_{\mathrm{on}} = k_{\mathrm{on}}^0\exp\bigg(-\frac{\sigma_{\mathrm{on}}(l-l_0)^2}{2k_BT}\bigg),\quad
+k_{\mathrm{off}} = k_{\mathrm{off}}^0\exp\bigg(-\frac{\sigma_{\mathrm{off}}(l-l_0)^2}{2k_BT}\bigg)
+\]
+
+\end{frame}
+
+
+\begin{frame}{三维红细胞的拉伸}
+\begin{columns}
+\begin{column}[c]{0.5\textwidth}
+\begin{center}
+%\input{./animate/stretch.tex}
+\animategraphics[width=\textwidth,poster=first,controls,buttonsize=0.8em,autoplay,loop]{2}{./animate/stretch/}{0}{10}
+\end{center}
+
+\end{column}
+\begin{column}[c]{0.5\textwidth}
+\input{./figures/stretch-compare.tikz}
+\vspace{-2.6em}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{剪切流中的三维红细胞, $\dot{\gamma}=10 \mathrm{s}^{-1}$}
+\begin{columns}
+\begin{column}[c]{0.5\textwidth}
+\begin{center}
+\animategraphics[width=\textwidth,poster=first,controls,buttonsize=0.8em,autoplay,loop]{5}{./animate/shear10/}{1}{71}
+\end{center}
+\end{column}
+\begin{column}[c]{0.5\textwidth}
+\input{./figures/TankFrequency.tikz}
+\vspace{-2.6em}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{剪切流中的三维红细胞, $\dot{\gamma}=30 \mathrm{s}^{-1}$}
+\begin{columns}
+\begin{column}[c]{0.5\textwidth}
+\begin{center}
+\animategraphics[width=\textwidth,poster=first,controls,buttonsize=0.8em,autoplay,loop]{5}{./animate/shear30/}{1}{59}
+\end{center}
+\end{column}
+\begin{column}[c]{0.5\textwidth}
+\input{./figures/TankFrequency.tikz}
+\vspace{-2.6em}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{剪切流中的三维红细胞, $\dot{\gamma}=100 \mathrm{s}^{-1}$}
+\begin{columns}
+\begin{column}[c]{0.5\textwidth}
+\begin{center}
+\animategraphics[width=\textwidth,poster=first,controls,buttonsize=0.8em,autoplay,loop]{5}{./animate/shear/}{0}{70}
+\end{center}
+\end{column}
+\begin{column}[c]{0.5\textwidth}
+\input{./figures/TankFrequency.tikz}
+\vspace{-2.6em}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{多个红细胞管道流动}
+\includegraphics[width=\textwidth]{./figures/rbc.png}
+\end{frame}

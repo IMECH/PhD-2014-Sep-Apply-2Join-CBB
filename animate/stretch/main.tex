@@ -1,0 +1,42 @@
+\documentclass[tikz]{standalone}
+% translate with >> pdflatex -shell-escape <file>
+
+% This file is an extract of the PGFPLOTS manual, copyright by Christian Feuersaenger.
+% 
+% Feel free to use it as long as you cite the pgfplots manual properly.
+%
+% See
+%   http://pgfplots.sourceforge.net/pgfplots.pdf
+% for the complete manual.
+%
+% Any required input files (for <plot table> or <plot file> or the table package) can be downloaded
+% at
+% http://www.ctan.org/tex-archive/graphics/pgf/contrib/pgfplots/doc/latex/
+% and
+% http://www.ctan.org/tex-archive/graphics/pgf/contrib/pgfplots/doc/latex/plotdata/
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+\newcommand{\rbc}[2]{
+\begin{tikzpicture}
+\begin{axis}[xmin=-8.5,xmax=8.5,ymin=-4.5,ymax=4.5,width=\textwidth,height=0.6\textwidth,
+ticklabel style={font=\LARGE},
+xlabel style={font=\huge,yshift=-0.75em},
+xlabel={force = #2 pN},
+xtick={-8,-4,0,4,8},
+ytick={-4,0,4},
+colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{90}]
+\addplot3[patch] file{./data/#1};
+\end{axis}
+
+\begin{axis}[yshift=-0.55\textwidth,xmin=-8.5,xmax=8.5,zmin=-3.5,zmax=3.5,width=\textwidth,height=0.5\textwidth,
+ticklabel style={font=\LARGE},
+xtick={-8,-4,0,4,8},
+colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{0}]
+\addplot3[patch] file{./data/#1};
+\end{axis}
+\end{tikzpicture}
+}
+\begin{document}
+\rbc{\numpic}{\numpic}
+\end{document}

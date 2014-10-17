@@ -1,0 +1,129 @@
+\usetikzlibrary{%
+    decorations.pathreplacing,%
+    decorations.pathmorphing,arrows
+}
+\begin{tikzpicture}[scale=0.925]
+  \begin{axis}[xmin=-30, xmax=30, ymin=-25, ymax=25, width=180pt, height=180pt,
+              ytick={-15,-5,0,5,15},
+              xlabel={$x$}, ylabel={$z$},
+label style={anchor=near ticklabel},
+    ylabel style={yshift=-1.75em},
+    xlabel style={yshift=0.3em},
+    tick label style={font=\scriptsize },
+    label style={font=\footnotesize},
+    legend style={font=\tiny,legend cell align=left,legend pos=north east},
+    title={高分子链构型$T=4000$},
+    title style={font=\footnotesize,color=blue}
+]
+
+   \addplot[color=blue,no marks, dashed, thick] coordinates {(25.5,-25) (25.5,25)};
+   \addplot[color=red,no marks, dashed, thick] coordinates {(16.5,-25) (16.5,25)};
+   \addplot[color=black,no marks, dashed, thick] coordinates {(0,-25) (0,25)};
+   \addplot[color=purple,no marks, dashed, thick] coordinates {(-16.5,-25) (-16.5,25)};
+   \addplot[color=brown!50!black,no marks, dashed, thick] coordinates {(-25.5,-25) (-25.5,25)};
+
+   \addplot[only marks, mark=ball, ball color=gray,mark size=0.6, draw=none]  table[x=wx,y=wz]{./figures/data/wallpartice.dat};
+
+   \addplot[no marks, red, line width=0.015em]  table[x=x1,y=y1]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=red, mark size=0.6, draw=none]  table[x=x1,y=y1]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, red, line width=0.015em]  table[x=x2,y=y2]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=red, mark size=0.6, draw=none]  table[x=x2,y=y2]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, red, line width=0.015em]  table[x=x3,y=y3]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=red, mark size=0.6, draw=none]  table[x=x3,y=y3]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, red, line width=0.015em]  table[x=x4,y=y4]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=red, mark size=0.6, draw=none]  table[x=x4,y=y4]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, red, line width=0.015em]  table[x=x5,y=y5]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=red, mark size=0.6, draw=none]  table[x=x5,y=y5]{./figures/data/DNA30new.dat};
+
+
+
+
+   \addplot[no marks, blue, line width=0.015em]  table[x=x6,y=y6]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=blue, mark size=0.6, draw=none]  table[x=x6,y=y6]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, blue, line width=0.015em]  table[x=x7,y=y7]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=blue, mark size=0.6, draw=none]  table[x=x7,y=y7]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, blue, line width=0.015em]  table[x=x8,y=y8]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=blue, mark size=0.6, draw=none]  table[x=x8,y=y8]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, blue, line width=0.015em]  table[x=x9,y=y9]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=blue, mark size=0.6, draw=none]  table[x=x9,y=y9]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, blue, line width=0.015em]  table[x=x10,y=y10]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=blue, mark size=0.6, draw=none]  table[x=x10,y=y10]{./figures/data/DNA30new.dat};
+
+
+
+   \addplot[no marks, green, line width=0.015em]  table[x=x11,y=y11]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=green, mark size=0.6, draw=none]  table[x=x11,y=y11]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, green, line width=0.015em]  table[x=x12,y=y12]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=green, mark size=0.6, draw=none]  table[x=x12,y=y12]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, green, line width=0.015em]  table[x=x13,y=y13]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=green, mark size=0.6, draw=none]  table[x=x13,y=y13]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, green, line width=0.015em]  table[x=x14,y=y14]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=green, mark size=0.6, draw=none]  table[x=x14,y=y14]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, green, line width=0.015em]  table[x=x15,y=y15]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=green, mark size=0.6, draw=none]  table[x=x15,y=y15]{./figures/data/DNA30new.dat};
+
+
+
+
+   \addplot[no marks, brown, line width=0.015em]  table[x=x16,y=y16]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=brown, mark size=0.6, draw=none]  table[x=x16,y=y16]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, brown, line width=0.015em]  table[x=x17,y=y17]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=brown, mark size=0.6, draw=none]  table[x=x17,y=y17]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, brown, line width=0.015em]  table[x=x18,y=y18]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=brown, mark size=0.6, draw=none]  table[x=x18,y=y18]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, brown, line width=0.015em]  table[x=x19,y=y19]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=brown, mark size=0.6, draw=none]  table[x=x19,y=y19]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, brown, line width=0.015em]  table[x=x20,y=y20]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=brown, mark size=0.6, draw=none]  table[x=x20,y=y20]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, purple, line width=0.015em]  table[x=x21,y=y21]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=purple, mark size=0.6, draw=none]  table[x=x21,y=y21]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, purple, line width=0.015em]  table[x=x22,y=y22]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=purple, mark size=0.6, draw=none]  table[x=x22,y=y22]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, purple, line width=0.015em]  table[x=x23,y=y23]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=purple, mark size=0.6, draw=none]  table[x=x23,y=y23]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, purple, line width=0.015em]  table[x=x24,y=y24]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=purple, mark size=0.6, draw=none]  table[x=x24,y=y24]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, purple, line width=0.015em]  table[x=x25,y=y25]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=purple, mark size=0.6, draw=none]  table[x=x25,y=y25]{./figures/data/DNA30new.dat};
+
+
+
+
+   \addplot[no marks, magenta, line width=0.015em]  table[x=x26,y=y26]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=magenta, mark size=0.6, draw=none]  table[x=x26,y=y26]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, magenta, line width=0.015em]  table[x=x27,y=y27]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=magenta, mark size=0.6, draw=none]  table[x=x27,y=y27]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, magenta, line width=0.015em]  table[x=x28,y=y28]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=magenta, mark size=0.6, draw=none]  table[x=x28,y=y28]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, magenta, line width=0.015em]  table[x=x29,y=y29]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=magenta, mark size=0.6, draw=none]  table[x=x29,y=y29]{./figures/data/DNA30new.dat};
+
+   \addplot[no marks, magenta, line width=0.015em]  table[x=x30,y=y30]{./figures/data/DNA30new.dat};
+   \addplot[only marks, mark=ball, ball color=magenta, mark size=0.6, draw=none]  table[x=x30,y=y30]{./figures/data/DNA30new.dat};
+
+  \end{axis}
+\end{tikzpicture}

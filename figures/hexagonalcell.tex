@@ -1,0 +1,24 @@
+\begin{tikzpicture}[
+    scale = 0.7,
+    axis/.style={very thick, ->, >=stealth'},
+    important line/.style={thick},
+    dashed line/.style={dashed},
+    pile/.style={thick, ->, >=stealth', shorten <=2pt, shorten
+    >=2pt},
+    every node/.style={color=black}]
+    % axis
+    \filldraw[fill=gray!10,draw=gray!10] (15:3) -- 
+         (75:3) -- (135:3) -- (195:3) -- (255:3) -- (315:3) -- (375:3);
+    \filldraw[fill=gray!30,draw=gray!30] (45:1.732)  -- (105:1.732) -- (165:1.732) -- (225:1.732) -- (285:1.732) -- (345:1.732) -- (405:1.732);
+    \draw[axis] (0,0)  -- (4.1,0) node(xline)[right]{$x$};
+    \draw[axis] (0,0)  -- (0,3.8) node(yline)[above]{$y$};
+    \draw[thick] ( 15:-3) --node[very near end, below]{$a$} ( 15:3) node[right]{$(a_x, a_y)$};
+    \draw[thick] ( 75:-3) --node[very near end, right]{$b$} ( 75:3) node[right]{$(b_x, b_y)$};
+    \draw[thick] (135:-3) -- (135:3) node[above]{$(c_x, c_y)$};
+    \draw[thick] (15:3) -- node[right] {\,$c=|\vec{b}-\vec{a}|$}
+         (75:3) -- (135:3) -- (195:3) -- (255:3) -- (315:3) -- (375:3);
+    \draw[thick] (45:2.2) node{$\mathbf{A}$} (105:1) node{$\mathbf{S}$} (170:0.4) node{$v$};
+    \fill (0,0) circle (2.5pt);
+    \draw[densely dashed,thick] (45:1.732)  -- (105:1.732) -- (165:1.732) -- (225:1.732) -- (285:1.732) -- (345:1.732) -- (405:1.732);
+\end{tikzpicture}
+

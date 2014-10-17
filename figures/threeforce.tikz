@@ -1,0 +1,42 @@
+\usetikzlibrary{shadows}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,intersections,through,backgrounds}
+\begin{tikzpicture}[scale = 1.5,
+    axis/.style={semithick, ->, >=stealth'},
+    important line/.style={thick},
+    dashed line/.style={dashed, thin},
+    pile/.style={thick, ->, >=stealth', shorten <=2pt, shorten
+    >=2pt},
+    every node/.style={color=black}]
+
+    \coordinate (p1) at (2.0,1.0);
+    \coordinate (p2) at (4.0,1.8);
+    \coordinate (p3) at (3.3,3.0);
+    \coordinate (c0) at (3.3,1.9);
+
+    \coordinate (v1) at (-0.8,-0.3);
+    \coordinate (v2) at (0.2,0.8);
+    \coordinate (v3) at (-0.7,0.6);
+    \coordinate (n0) at (1.0,2.0);
+    \coordinate (p) at (0.5,3);
+    \coordinate (vp) at (1.25,-0.5);
+
+    \fill[gray!20,semithick] (p1) node[below,red]{$p_1=(x_1,y_1,z_1)$} -- (p2)node[midway,below,green!40!black]{$\mathbf{e}_{21}$} node[green!40!black,right]{$p_2=(x_2,y_2,z_2)$}  -- (p3)  node[right,blue]{$p_3=(x_3,y_3,z_3)$} node[midway,right,blue]{$\mathbf{e}_{32}$}-- (p1) node[midway,above left=-1.5,red]{$\mathbf{e}_{13}$} ;
+
+\draw[semithick,axis,red](p3)--(p1);
+\draw[semithick,axis,blue](p2)--(p3);
+\draw[semithick,axis,green!40!black](p1)--(p2);
+
+    \fill[gray,draw=black] (p1)   circle (0.75pt) (p2)   circle (0.75pt) (p3) circle (0.75pt);
+
+    \fill[gray,draw=black] (c0) circle(0.75pt);
+
+    \fill[gray,draw=black] (3.1,1.9) circle(0.75pt) node[above]{$\mathbf{c}$};
+
+   \draw[axis] (c0)--++(n0) node[above]{$\mathbf{n}$};
+  \node[above right=20pt] at (p1){$A_k$};
+
+   %\draw[red,dashed] (p)++(vp)--++(vp) node[below,red]{$p'$};
+   %\draw[fill=red,draw=gray,densely dotted] (p)++(vp)++(vp) circle (0.75pt);
+
+\end{tikzpicture}

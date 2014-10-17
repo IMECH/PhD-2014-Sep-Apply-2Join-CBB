@@ -1,0 +1,5 @@
+\begin{tikzpicture}
+\begin{axis}[axis equal,colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{90},xmin=-8,xmax=8,ymin=-4,ymax=4,width=0.5\textwidth,height=0.3\textwidth]
+\addplot3[patch] file{./figures/data/rbc100.dat};
+\end{axis}
+\end{tikzpicture}

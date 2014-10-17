@@ -1,0 +1,40 @@
+\usetikzlibrary{shadows}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,intersections,through,backgrounds}
+\begin{tikzpicture}[scale = 1.5,
+    axis/.style={semithick, ->, >=stealth'},
+    important line/.style={thick},
+    dashed line/.style={dashed, thin},
+    pile/.style={thick, ->, >=stealth', shorten <=2pt, shorten
+    >=2pt},
+    every node/.style={color=black}]
+
+    \coordinate (p1) at (2.0,1.0);
+    \coordinate (p2) at (4.0,1.8);
+    \coordinate (p3) at (3.3,3.0);
+    \coordinate (c0) at (3.3,1.9);
+
+    \coordinate (v1) at (-0.8,-0.3);
+    \coordinate (v2) at (0.2,0.8);
+    \coordinate (v3) at (-0.7,0.6);
+    \coordinate (n0) at (1.0,2.0);
+    \coordinate (p) at (0.5,3);
+    \coordinate (vp) at (1.25,-0.5);
+
+    \filldraw[fill=gray!20,draw=black!80,semithick] (p1) node[below,blue]{$p_1$} -- (p2)node[midway,below]{$\mathbf{e}_3$} node[below,blue]{$p_2$}  -- (p3)  node[right,blue]{$p_3$} node[midway,right]{$\mathbf{e}_1$}-- (p1) node[midway,above left=-1.5]{$\mathbf{e}_2$} ;
+    \fill[blue] (p1)   circle (0.75pt) (p2)   circle (0.75pt) (p3) circle (0.75pt);
+
+    \fill[black] (c0) circle(0.75pt);
+
+   \fill[red] (p) circle(1pt);
+
+   \draw[axis,blue] (p1)--++(v1) node[below,blue]{$\mathbf{v}_1$};
+   \draw[axis,blue] (p2)--++(v2) node[above,blue]{$\mathbf{v}_2$};
+   \draw[axis,blue] (p3)--++(v3) node[above,blue]{$\mathbf{v}_3$};
+   \draw[axis] (c0)--++(n0) node[above]{$\mathbf{n}$};
+   \draw[axis,red] (p)node[above left,red]{$p$}--++(vp) node[midway,above,red]{$\mathbf{v}$};
+
+   %\draw[red,dashed] (p)++(vp)--++(vp) node[below,red]{$p'$};
+   %\draw[fill=red,draw=gray,densely dotted] (p)++(vp)++(vp) circle (0.75pt);
+
+\end{tikzpicture}

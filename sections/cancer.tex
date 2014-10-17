@@ -1,0 +1,43 @@
+\subsection{乳腺细胞的模拟}
+\begin{frame}{乳腺细胞吸入实验及DPD模型}
+\begin{columns}
+\begin{column}[c]{0.25\textwidth}
+\begin{center}
+\input{./figures/sphere.tikz}
+\end{center}
+\end{column}
+\begin{column}[c]{0.75\textwidth}
+{\small
+\[
+V(\{\mathbf{X}_i\}) = V_{\text{in-plane}} + V_{\text{bending}} + \textcolor{red}{V_{\text{area}}} + V_{\text{volume}}
+\]}
+\end{column}
+\end{columns}
+\begin{center}
+\asyinclude[width=\textwidth, viewportwidth=\textwidth,viewportheight=0.3571\textwidth]{./figures/3dchannel.asy}
+\end{center}
+\end{frame}
+
+\begin{frame}{乳腺细胞吸入实验的模拟动画}
+\begin{center}
+\begin{overpic}[width=\textwidth]{./animate/cell2d/wall.pdf}
+\put(0,0){\animategraphics[width=\textwidth, poster=first,controls,buttonsize=0.8em]{5}{./animate/cell2d/}{0}{90}}
+\end{overpic}
+\end{center}
+\end{frame}
+
+\begin{frame}{乳腺细胞吸入实验的模拟结果}
+\begin{columns}
+\begin{column}[c]{0.5\textwidth}
+\includegraphics[width=\textwidth]{./figures/cell.jpg}
+\end{column}
+\begin{column}[c]{0.5\textwidth}
+\begin{center}
+\input{./figures/cellx.tikz}
+\vspace{-2em}
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+

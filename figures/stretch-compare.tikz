@@ -1,0 +1,58 @@
+\begin{tikzpicture}[scale=0.925]
+\begin{axis}[xmin=0,xmax=200,ymin=0,ymax=22,width=182pt,height=1.44\textwidth,xlabel={force ($\mathrm{pN}$)},ylabel={diameter ($\mathrm{\mu m}$)},
+ytick={0,2,...,20},
+label style={anchor=near ticklabel},
+    ylabel style={yshift=-2em},
+    xlabel style={yshift=0.3em},
+    tick label style={font=\scriptsize },
+    label style={font=\footnotesize},
+    legend style={font=\tiny,legend cell align=left,legend pos=north west}
+]
+
+
+\addplot+[mark=diamond,only marks,error bars/.cd,
+	y dir=both,y explicit]
+coordinates {
+(  0.01,  7.820) +- (0,0.780)
+( 16.41,  9.230) +- (0,0.880)
+( 19.70,  9.535) +- (0,0.935)
+( 31.01, 10.455) +- (0,0.955)
+( 38.30, 11.145) +- (0,1.145)
+( 47.11, 11.870) +- (0,1.090)
+( 67.51, 12.860) +- (0,1.070)
+( 87.60, 13.775) +- (0,1.225)
+(108.99, 14.390) +- (0,1.470)
+(130.01, 15.190) +- (0,1.450)
+(151.01, 15.610) +- (0,1.300)
+(173.00, 16.065) +- (0,1.815)
+(192.99, 16.255) +- (0,1.795)
+(  0.01,  7.515) +- (0,0.705)
+( 16.41,  6.195) +- (0,0.665)
+( 19.70,  6.260) +- (0,0.710)
+( 31.01,  5.760) +- (0,0.570)
+( 38.30,  5.405) +- (0,0.595)
+( 47.11,  5.090) +- (0,0.820)
+( 67.51,  4.695) +- (0,0.735)
+( 87.60,  4.665) +- (0,0.635)
+(108.99,  4.595) +- (0,0.715)
+(130.01,  4.575) +- (0,0.635)
+(151.01,  4.405) +- (0,0.605)
+(173.00,  4.580) +- (0,0.510)
+(192.99,  4.395) +- (0,0.615)};
+
+\addlegendentry{Experiment}
+
+\addplot+[no marks,red,smooth] table[x=x,y=y]{./figures/data/spectrin.dat};
+\addlegendentry{spectrin-level, Dao et al.}
+
+\addplot+[no marks,black,densely dashed,smooth,thick] table[x=f,y=w]{./figures/data/wlc-pow.dat};
+\addlegendentry{wlc-pow, $N_v = 500$}
+
+\addplot+[no marks,black,densely dotted,smooth,thick] table[x=f,y=w]{./figures/data/fene-pow.dat};
+\addlegendentry{fene-pow, $N_v = 500$}
+
+\node[font=\footnotesize] at (axis cs:170,7){$D_T$};
+\node[font=\footnotesize] at (axis cs:170,12.5){$D_A$};
+
+\end{axis}
+\end{tikzpicture}

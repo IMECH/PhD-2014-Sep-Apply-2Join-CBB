@@ -1,0 +1,38 @@
+\usetikzlibrary{shadows}
+\usetikzlibrary{arrows}
+\usetikzlibrary{calc,intersections,through,backgrounds}
+\begin{tikzpicture}[scale = 1,rotate=40,
+    axis/.style={semithick, ->, >=stealth'},
+    important line/.style={semithick},
+    dashed line/.style={dashed, thin},
+    pile/.style={thick, ->, >=stealth', shorten <=2pt, shorten
+    >=2pt},
+    every node/.style={color=black}]
+    \coordinate (p1) at (4.12,4.64);
+    \coordinate (p2) at (4.84,1.8);
+    \coordinate (p3) at (6.48,4.08);
+    \coordinate (p4) at (7.6,2.0);
+    \coordinate (e) at (33.89:6.31);
+    \coordinate (f) at (22.67:6.85);
+    
+    \fill[fill=red!20] (p1)node[left,black]{$p_1$} -- node[above] {$\mathbf{e}_{13}$} (p3)node[above,black]{$p_3$} -- (p2)node[below,black]{$p_2$} -- node[midway,left] {$\mathbf{e}_{21}$}(p1) ;
+   
+    \fill[fill= blue!20] (p3)-- node[above] {$\mathbf{e}_{34}$} (p4)node[right]{$p_4$} -- node[below right] {$\mathbf{e}_{42}$}(p2); 
+
+   \draw[->, >=stealth',semithick] (p1) -- (p2);
+   \draw[->, >=stealth',semithick] (p2) -- (p4);
+   \draw[->, >=stealth',semithick] (p4) -- (p3);
+   \draw[->, >=stealth',semithick] (p3) -- (p1);
+   \draw[->, >=stealth',semithick] (p2) -- (p3) node[midway,above left=-3pt]{$\mathbf{e}_{32}$};
+
+
+    \fill[red,draw=gray]  (33.89:6.31) circle (2pt);
+    \fill[blue,draw=gray]  (22.67:6.85) circle (2pt);
+%\draw[thick] (e) -- node[near start,below] {$r$} (X) (f) --  node[near start, above] {$r$} (X);
+    \draw [axis,red] (e)node[below =5pt]{$A_1$} -- (43.89:9) node[right,red] {$\mathbf{n}_1$};
+    \draw [axis,blue] (f)node[below=5pt]{$A_2$} -- (22.67:9.8) node[right,blue] {$\mathbf{n}_2$};
+    \draw (22.67:8.75)  arc(37:57:8) (32:8.8)node{$\theta$};
+
+
+
+\end{tikzpicture}

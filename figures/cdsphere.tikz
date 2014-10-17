@@ -1,0 +1,42 @@
+\begin{tikzpicture}[scale=0.925]
+\begin{loglogaxis}[xmin=0.1,xmax=1000,ymin=0.01,ymax=10000,width=180pt,height=180pt,
+xlabel=$\mathrm{Re}$,ylabel=$C_d$,
+label style={anchor=near ticklabel},
+    ylabel style={yshift=-1.5em},
+    xlabel style={yshift=0.3em},
+    tick label style={font=\scriptsize },
+    label style={font=\footnotesize},
+    legend style={font=\tiny,legend cell align=left,legend pos=north east},
+    title={圆球绕流阻力系数与雷诺数的关系},
+    title style={font=\footnotesize,color=blue}
+]
+
+\addplot[only marks, draw=black, fill=black!30, mark size=1.5] coordinates {
+		( 0.20,112.34)
+                ( 0.99, 27.33)
+                ( 2.10, 13.01)
+                ( 4.02,  7.04)
+                ( 9.80,  3.28)
+                ( 22.00, 2.02)
+                ( 40.98, 1.31)
+                ( 81.32, 0.98)
+                (101.25, 0.99)};
+
+
+%\addplot[only marks, draw=black, fill=black!30, mark size=1.5] coordinates {
+%(4.5044,    7.7161)
+%(20.8442,    2.6203)
+%(39.1188,    2.1084)
+%(69.8477,   2.2380)};
+\addlegendentry{DPD}
+
+\addplot+[mark=none,domain=0.1:1000,samples=2,densely dashed,red] {24/x}; 
+\addlegendentry{$24/\mathrm{Re}$}
+%\addlegendentry{$\frac{24}{\mathrm{Re}}$}
+
+\addplot+[mark=none,domain=0.2:1000,samples=200,smooth,blue] {21.12/x + 6.3/sqrt(x) + 0.25}; 
+\addlegendentry{实验拟合曲线}
+%\addlegendentry{$21.12/\mathrm{Re}+6.3/\sqrt{\mathrm{Re}}+0.25$}
+%\addlegendentry{$\frac{21.12}{\mathrm{Re}}+\frac{6.3}{\sqrt{\mathrm{Re}}}+0.25$}
+\end{loglogaxis}
+\end{tikzpicture}

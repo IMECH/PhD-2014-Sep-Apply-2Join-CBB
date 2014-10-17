@@ -1,0 +1,48 @@
+\begin{tikzpicture}[scale=0.925]
+\begin{axis}[xmin=0.01, xmax=0.05, ymin=0, ymax=3, width=182pt, height=180pt,
+xlabel=$g$,ylabel=$v_\mathrm{mean}$,
+label style={anchor=near ticklabel},
+    ylabel style={yshift=-2em},
+    xlabel style={yshift=0.3em},
+    tick label style={font=\scriptsize },
+    label style={font=\footnotesize},
+    legend style={font=\tiny,legend cell align=left,legend pos=north east},
+    title={水平体力(压差)与平均流速},
+    title style={font=\footnotesize,color=blue}
+]
+
+\addplot[mark=*, mark options={fill=black!30}, mark size=1.5, draw=black] coordinates {
+    (0.0100,    0.2858)
+    (0.0200,    0.5715)
+    (0.0300,    0.8444)
+    (0.0400,    1.1563)
+    (0.0500,    1.4760)};
+
+\addlegendentry{parallel};
+
+
+\addplot[mark=*, mark options={fill=blue!30}, mark size=1.5, draw=blue] coordinates {
+    (0.0100,    0.0394)
+    (0.0200,    0.0789)
+    (0.0300,    0.1148)
+    (0.0400,    0.1574)
+    (0.0500,    0.1989)};
+\addlegendentry{perpendicular};
+
+
+\addplot[mark=*, mark options={fill=red!30}, mark size=1.5, draw=red] coordinates {
+    (0.0100,    0.0588)
+    (0.0200,    0.1176)
+    (0.0300,    0.1720)
+    (0.0400,    0.2317)
+    (0.0500,    0.2955)
+};
+\addlegendentry{cubic};
+
+
+\addplot[mark=*,  mark options={fill=black!30}, mark size=1.5, draw=black] coordinates {
+    (0.0100,    1.253)
+    (0.0200,    2.447)};
+
+\end{axis}
+\end{tikzpicture}

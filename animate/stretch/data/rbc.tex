@@ -1,0 +1,63 @@
+\documentclass{article}
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\pagestyle{empty}
+\usepackage{animate}
+
+\begin{document}
+\newcommand{\rbc}[2]{
+\begin{tikzpicture}
+\begin{axis}[axis equal,xmin=-8,xmax=8,ymin=-4.5,ymax=4.5,width=0.6\textwidth,height=0.4\textwidth,
+yticklabel style={font=\scriptsize},
+xticklabel style={font=\scriptsize},
+xlabel style={font=\footnotesize},
+ylabel style={font=\footnotesize},
+xtick=\empty,
+colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{90}]
+\addplot3[patch] file{#1};
+\end{axis}
+
+\begin{axis}[yshift=-0.2\textwidth,axis equal,xmin=-8,xmax=8,zmin=-3,zmax=3,width=0.6\textwidth,height=0.35\textwidth,
+yticklabel style={font=\scriptsize},
+xticklabel style={font=\scriptsize},
+xlabel style={font=\footnotesize},
+ylabel style={font=\footnotesize},
+xlabel={force = #2 pN},
+colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{0}]
+\addplot3[patch] file{#1};
+\end{axis}
+\end{tikzpicture}
+}
+
+
+\begin{animateinline}[autoplay, poster = last,controls,buttonsize=0.8em]{3}
+\rbc{2-1txt}{20}\newframe
+\rbc{2-3txt}{20}\newframe
+\rbc{2-5txt}{20}\newframe
+\rbc{2-7txt}{20}\newframe
+\rbc{2-9txt}{20}\newframe
+\rbc{4-1txt}{40}\newframe
+\rbc{4-3txt}{40}\newframe
+\rbc{4-5txt}{40}\newframe
+\rbc{4-7txt}{40}\newframe
+\rbc{4-9txt}{40}\newframe
+\rbc{6-1txt}{60}\newframe
+\rbc{6-3txt}{60}\newframe
+\rbc{6-5txt}{60}\newframe
+\rbc{6-7txt}{60}\newframe
+\rbc{6-9txt}{60}\newframe
+\rbc{8-1txt}{80}\newframe
+\rbc{8-3txt}{80}\newframe
+\rbc{8-5txt}{80}\newframe
+\rbc{8-7txt}{80}\newframe
+\rbc{8-9txt}{80}\newframe
+\rbc{10-1txt}{100}\newframe
+\rbc{10-3txt}{100}\newframe
+\rbc{10-5txt}{100}\newframe
+\rbc{10-7txt}{100}\newframe
+\rbc{10-9txt}{100}
+\end{animateinline}
+
+\end{document}

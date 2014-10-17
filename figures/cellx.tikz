@@ -1,0 +1,51 @@
+\usetikzlibrary{%
+    decorations.pathreplacing,%
+    decorations.pathmorphing,arrows
+}
+\begin{tikzpicture}[scale=0.925]
+\begin{scope}[yshift=95pt]
+  \begin{axis}[xmin=-60, xmax=60, ymin=-22, ymax=22,width=182pt,height=95pt,
+              ytick={-20,0,20},
+              %xlabel={$t$}, 
+              ylabel={$z$},
+              xticklabel=\empty,
+label style={anchor=near ticklabel},
+    ylabel style={yshift=-2em},
+    xlabel style={yshift=0.3em},
+    tick label style={font=\scriptsize},
+    label style={font=\footnotesize},
+    legend style={font=\tiny,legend cell align=left,legend pos=north west}
+              ]
+
+   \addplot[color=black,no marks,thick] coordinates {(-70,-20.25) (-40,-20.25) (-23, -3.25) (23, -3.25) (40,-20.25) (70,-20.25)};
+   \addplot[color=black,no marks,thick] coordinates {(-70,20.25) (-40,20.25) (-23, 3.25) (23, 3.25) (40,20.25) (70,20.25)};
+
+   \addplot[no marks,ball color=red]  table[x=x1,y=y1]{./figures/data/cellshape.dat};
+   \addplot[no marks, blue!25!red,thick]  table[x=x2,y=y2]{./figures/data/cellshape.dat};
+   \addplot[no marks, blue!50!red,thick]  table[x=x3,y=y3]{./figures/data/cellshape.dat};
+   \addplot[no marks, blue!75!red,thick]  table[x=x4,y=y4]{./figures/data/cellshape.dat};
+   \addplot[no marks, blue!100!red,thick]  table[x=x5,y=y5]{./figures/data/cellshape.dat};
+   \addplot[no marks, blue!75!green,thick]  table[x=x6,y=y6]{./figures/data/cellshape.dat};
+   \addplot[no marks, blue!50!green,thick]  table[x=x7,y=y7]{./figures/data/cellshape.dat};
+   \addplot[no marks, blue!25!green,thick]  table[x=x8,y=y8]{./figures/data/cellshape.dat};
+   \addplot[no marks, green,thick]  table[x=x9,y=y9]{./figures/data/cellshape.dat};
+   \addplot[no marks, red!25!green,thick]  table[x=x10,y=y10]{./figures/data/cellshape.dat};
+   \addplot[no marks, red!50!green,thick]  table[x=x11,y=y11]{./figures/data/cellshape.dat};
+   \addplot[no marks, red!75!green,thick]  table[x=x12,y=y12]{./figures/data/cellshape.dat};
+  \end{axis}
+\end{scope}
+
+  \begin{axis}[xmin=-60, xmax=60, ymin=0, ymax=18, width=182pt,height=135pt,
+              %ytick={0,30,60,90,120,150,180},
+              xlabel={$x$}, ylabel={$t$},
+label style={anchor=near ticklabel},
+    ylabel style={yshift=-2em},
+    xlabel style={yshift=0.3em},
+    tick label style={font=\scriptsize},
+    label style={font=\footnotesize},
+    legend style={font=\tiny,legend cell align=left,legend pos=north west}
+              ]
+   \addplot[no marks, black,thick]  table[x=x,y=t]{./figures/data/cellx.dat};
+
+  \end{axis}
+\end{tikzpicture}

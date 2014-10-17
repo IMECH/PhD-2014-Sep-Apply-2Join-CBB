@@ -1,0 +1,47 @@
+\documentclass[tikz]{standalone}
+% translate with >> pdflatex -shell-escape <file>
+
+% This file is an extract of the PGFPLOTS manual, copyright by Christian Feuersaenger.
+% 
+% Feel free to use it as long as you cite the pgfplots manual properly.
+%
+% See
+%   http://pgfplots.sourceforge.net/pgfplots.pdf
+% for the complete manual.
+%
+% Any required input files (for <plot table> or <plot file> or the table package) can be downloaded
+% at
+% http://www.ctan.org/tex-archive/graphics/pgf/contrib/pgfplots/doc/latex/
+% and
+% http://www.ctan.org/tex-archive/graphics/pgf/contrib/pgfplots/doc/latex/plotdata/
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+\usetikzlibrary{%
+    decorations.pathreplacing,%
+    decorations.pathmorphing,arrows
+}
+\newcommand{\rbc}[2]{
+\begin{tikzpicture}
+\draw(-1,-7.3)rectangle(11,5.7);
+\begin{axis}[xmin=-10,xmax=10,zmin=-4,zmax=4,width=\textwidth,height=0.6\textwidth,
+ticklabel style={font=\LARGE},
+xlabel style={font=\huge,yshift=-0.75em},
+hide axis,
+colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{60}]
+\addplot3[patch] file{./data/#1};
+\end{axis}
+\node[font=\huge] at (5,-1) {$\dot{\gamma}=30 \mathrm{s}^{-1}$};
+
+\begin{axis}[yshift=-0.55\textwidth,xmin=-9.5,xmax=9.5,zmin=-4.5,zmax=4.5,width=\textwidth,height=0.55\textwidth,
+ticklabel style={font=\LARGE},hide axis,
+colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{0}]
+\addplot3[patch] file{./data/#1};
+\draw[->,very thick,blue,>=stealth'] (axis cs:4,0,-4.25)--(axis cs:-4,0,-4.25);
+\draw[->,very thick,blue,>=stealth'] (axis cs:-4,0,4.25)--(axis cs:4,0,4.25);
+\end{axis}
+\end{tikzpicture}
+}
+\begin{document}
+\rbc{\numpic}{\numpic}
+\end{document}

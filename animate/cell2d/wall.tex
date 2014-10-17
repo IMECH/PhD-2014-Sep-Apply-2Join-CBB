@@ -1,0 +1,30 @@
+\documentclass[tikz]{standalone}
+% translate with >> pdflatex -shell-escape <file>
+
+% This file is an extract of the PGFPLOTS manual, copyright by Christian Feuersaenger.
+% 
+% Feel free to use it as long as you cite the pgfplots manual properly.
+%
+% See
+%   http://pgfplots.sourceforge.net/pgfplots.pdf
+% for the complete manual.
+%
+% Any required input files (for <plot table> or <plot file> or the table package) can be downloaded
+% at
+% http://www.ctan.org/tex-archive/graphics/pgf/contrib/pgfplots/doc/latex/
+% and
+% http://www.ctan.org/tex-archive/graphics/pgf/contrib/pgfplots/doc/latex/plotdata/
+
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.6}
+\begin{document}
+\begin{tikzpicture}
+\clip(-0.75,-0.75)rectangle(11,3.5);
+\begin{axis}[xmin=-70,xmax=70,ymin=-21,ymax=21,width=\textwidth,height=0.39\textwidth,
+%ticklabel style={font=\LARGE},
+xlabel style={font=\huge,yshift=-0.75em}]
+\addplot+[no marks,blue,thick] table[x=x1,y=y1]{./data/wall.xyz};
+\addplot+[no marks,blue,thick] table[x=x2,y=y2]{./data/wall.xyz};
+\end{axis}
+\end{tikzpicture}
+\end{document}

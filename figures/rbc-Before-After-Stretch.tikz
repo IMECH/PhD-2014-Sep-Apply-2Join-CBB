@@ -1,0 +1,21 @@
+\usetikzlibrary{%
+    decorations.pathreplacing,%
+    decorations.pathmorphing,arrows
+}
+\begin{tikzpicture}
+\begin{axis}[axis equal,colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{90},xmin=-8,xmax=8,ymin=-6.5,ymax=4,width=1.2\textwidth,height=\textwidth,hide axis]
+\addplot3[patch] file{./figures/data/rbc0.dat};
+\addplot3 + [only marks,mark=ball,ball color=red] table[x=x1,y=y1,z=z1]{./figures/data/strectbead.dat};
+\node[font=\scriptsize] at (axis cs:0,-6){拉伸前};
+\draw[<->,>=stealth',blue,thick] (axis cs:-3.8,0)--(axis cs:3.8,0) node[above,midway]{$D_0$};
+\end{axis}
+
+\begin{axis}[axis equal,colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{90},xmin=-8,xmax=8,ymin=-6.5,ymax=4,width=1.2\textwidth,height=\textwidth,yshift=-0.6\textwidth,hide axis]
+\addplot3[patch] file{./figures/data/rbc100.dat};
+\addplot3 + [only marks,mark=ball,ball color=red] table[x=x2,y=y2,z=z2]{./figures/data/strectbead.dat};
+\node[font=\scriptsize] at (axis cs:0,-6){拉伸后:100pN};
+\draw[<->,>=stealth',blue,thick] (axis cs:-7.25,-3.5)--(axis cs:7.25,-3.5) node[below,midway]{$D_A$};
+\draw[blue,thick,dashed] (axis cs:-7.25,-1)--(axis cs:-7.25,-4) (axis cs:7.25,-1)--(axis cs:7.25,-4);
+\draw[<->,>=stealth',blue,thick] (axis cs:0,-2.65)--(axis cs:0,2.65) node[right,midway]{$D_T$};
+\end{axis}
+\end{tikzpicture}

@@ -1,0 +1,37 @@
+\pgfplotsset{compat=1.6}
+\newcommand{\rbc}[2]{
+\begin{tikzpicture}
+\begin{axis}[xmin=-8.5,xmax=8.5,ymin=-4.5,ymax=4.5,width=\textwidth,height=0.8\textwidth,
+xticklabel style={font=\scriptsize},
+yticklabel style={font=\scriptsize},
+xlabel style={font=\footnotesize},
+ylabel style={font=\footnotesize},
+xlabel={force = #2 pN},
+colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{90},axis equal]
+\addplot3[patch] file{./animate/stretch/data/#1};
+\end{axis}
+
+\begin{axis}[yshift=-0.55\textwidth,xmin=-8.5,xmax=8.5,zmin=-3,zmax=3,width=\textwidth,height=0.6\textwidth,
+zticklabel style={font=\scriptsize},
+xticklabel style={font=\scriptsize},
+xlabel style={font=\footnotesize},
+zlabel style={font=\footnotesize},
+colormap={bw}{gray(0cm)=(0); gray(1cm)=(1)}, view={0}{0}, axis equal]
+\addplot3[patch] file{./animate/stretch/data/#1};
+\end{axis}
+\end{tikzpicture}
+}
+
+\begin{animateinline}[autoplay,poster=last,controls,buttonsize=0.8em]{3}
+%\rbc{2-1txt}{0}\newframe
+%\rbc{2-11txt}{20}\newframe
+%\rbc{4-11txt}{40}\newframe
+%\rbc{6-11txt}{60}\newframe
+%\rbc{8-11txt}{80}\newframe
+%\rbc{10-11txt}{100}\newframe
+%\rbc{12-11txt}{120}\newframe
+%\rbc{14-11txt}{140}\newframe
+%\rbc{16-11txt}{160}\newframe
+%\rbc{18-11txt}{180}\newframe
+\rbc{20-11txt}{200}
+\end{animateinline}

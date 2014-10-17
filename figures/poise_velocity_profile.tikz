@@ -1,0 +1,25 @@
+\begin{tikzpicture}
+  \begin{axis}[xmin=-16.5, xmax=16.5, ymin=0, ymax=9, width=240pt, height=200pt,
+              xlabel={$z$}, ylabel={$v_x$},
+label style={anchor=near ticklabel},
+    ylabel style={yshift=-1.75em},
+    xlabel style={yshift=0.3em},
+    tick label style={font=\scriptsize },
+    label style={font=\footnotesize},
+    legend style={font=\tiny,legend cell align=left,legend pos=north east}
+              ]
+
+  \addplot[only marks, mark=*        , draw=black, fill=black!30, mark size=1.5]  table[x=z,y=v2000]{./figures/data/vx_dpd.dat};
+  \addplot[only marks, mark=square*  , draw=purple,fill=purple!30,mark size=1.5]  table[x=z,y=v800 ]{./figures/data/vx_dpd.dat};
+  \addplot[only marks, mark=triangle*, draw=brown, fill=brown!30, mark size=1.5]  table[x=z,y=v400 ]{./figures/data/vx_dpd.dat};
+  \addplot[only marks, mark=diamond* , draw=red,   fill=red!30,   mark size=1.5]  table[x=z,y=v200 ]{./figures/data/vx_dpd.dat};
+  \addplot[only marks, mark=pentagon*, draw=blue,  fill=blue!30,  mark size=1.5]  table[x=z,y=v100 ]{./figures/data/vx_dpd.dat};
+
+
+  \addplot[smooth, black ] table[x=z,y=v2000]{./figures/data/vx_analysis.dat}; \addlegendentry{$t = 2000$}
+  \addplot[smooth, purple] table[x=z,y=v800 ]{./figures/data/vx_analysis.dat}; \addlegendentry{$t = 800$}
+  \addplot[smooth, brown ] table[x=z,y=v400 ]{./figures/data/vx_analysis.dat}; \addlegendentry{$t = 400$}
+  \addplot[smooth, red   ] table[x=z,y=v200 ]{./figures/data/vx_analysis.dat}; \addlegendentry{$t = 200$}
+  \addplot[smooth, blue  ] table[x=z,y=v100 ]{./figures/data/vx_analysis.dat}; \addlegendentry{$t = 100$}
+  \end{axis}
+\end{tikzpicture}

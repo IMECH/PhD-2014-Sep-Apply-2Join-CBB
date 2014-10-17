@@ -1,0 +1,41 @@
+\usetikzlibrary{%
+    decorations.pathreplacing,%
+    decorations.pathmorphing,arrows
+}
+\begin{tikzpicture}
+  \begin{axis}[xmin=-40, xmax=-15, ymin=0, ymax=180, width=240pt, height=200pt,
+              ytick={0,30,60,90,120,150,180},
+              xlabel={$A_{sl}$}, ylabel={$\theta$},
+label style={anchor=near ticklabel},
+    ylabel style={yshift=-1.75em},
+    xlabel style={yshift=0.3em},
+    tick label style={font=\scriptsize },
+    label style={font=\footnotesize},
+    legend style={font=\tiny,legend cell align=left,legend pos=north east}
+              ]
+   \addplot[only marks, mark=*, draw=black, fill=black!30]  coordinates {
+           (-40,0) (-37.5,30) (-35, 55) (-32.5,75) (-30,90) 
+           (-27.5, 100) (-25,111) (-22.5,122) (-20,133) (-17.5, 150)};
+  \addplot[black] coordinates {
+           (-40,0) (-37.5,30) (-35, 55) (-32.5,75) (-30,90) 
+           (-27.5, 100) (-25,111) (-22.5,122) (-20,133) (-17.5, 150)};
+
+  \end{axis}
+\begin{scope}[ media/.style={font={\tiny\sffamily}},
+    wave/.style={
+        decorate,decoration={snake,post length=1.4mm,amplitude=2mm,
+        segment length=2mm},thick},
+    interface/.style={
+        postaction={draw,decorate,decoration={border,angle=-45,
+                    amplitude=0.3cm,segment length=2mm}}},xshift=70,yshift=100]
+
+\draw[fill=blue!20,semithick](20:1) arc(20:160:1);
+\draw[semithick,interface] (-1.5,0.35)--(1.5,0.35);
+
+\draw[semithick,blue](160:1)--++(70:0.75);
+\draw[blue] (160:1)++(0.2,0)  arc(0:70:0.2) node[right]{\tiny $\theta$};
+
+\node[above] at (-1.05,-3.5) {\includegraphics[width=6.7em]{./figures/35.pdf}};
+\node[above] at (3.05,-3.5) {\includegraphics[width=4em]{./figures/20.pdf}};
+\end{scope}
+\end{tikzpicture}
